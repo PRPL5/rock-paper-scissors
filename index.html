@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/game.js"></script>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+
+    <div>
+        <h3>Input Your Choice </h3>
+        <input type="text" id="choiceField" value="">
+        <input type="submit" value="Insert Answer" name="" id="insChoice" onclick="getChoice();">
+        <button onclick="generateChoice();">generate</button>
+        <button onclick="checkChoice();">check</button>
+    </div>
+    <p id="myChoice"></p>
+    <p id="npcChoice"></p>
+    <p id="winOrLose" value=""></p>
+</body>
+</html>
