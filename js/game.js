@@ -1,34 +1,92 @@
-const insChoice = document.getElementById('.insChoice');
-const choices = ["rock", "paper", "scissors"];
-const npcChoice = choices;
+let playerScore = 0;
+let npcScore = 0;
 
-function getChoice() {
-    let choiceField = document.getElementById("choiceField").value;
-    document.getElementById("myChoice").innerHTML = choiceField.toLowerCase();
-}
+let npcSelection = npcChoice();
+let playerSelection = myChoice();
 
-function generateChoice() {
-
-
-    const random = Math.floor(Math.random() * npcChoice.length);
-    document.getElementById("npcChoice").innerHTML = npcChoice[random].toLowerCase();
-
+function npcChoice(){
+    const choices = ['rock', 'paper', 'scissors'];
+    let random = Math.floor(Math.random() * choices.length);
+    return choices[random];
 
 }
 
-function checkChoice() {
+console.log("Computer " + npcSelection);
 
-    if ((myChoice == "paper" && npcChoice == "paper") || (myChoice == "rock" && npcChoice == "rock") || (myChoice == "scissors" && npcChoice == "scissors")) {
-        document.getElementById('winOrLose').innerHTML.value = "Draw";
-    }
-    else if((myChoice == "paper" && npcChoice == "scissors") || (myChoice == "rock" && npcChoice == "paper") ||( myChoice == "scissors" && npcChoice == "rock")) {
-        document.getElementById('winOrLose').innerHTML.value = "Computer wins";
-    }
-    else if((myChoice == "paper" && npcChoice == "rock") ||( myChoice == "rock" && npcChoice == "scissors" )|| (myChoice == "scissors" && npcChoice == "paper")) {
-        document.getElementById('winOrLose').innerHTML.value = "You win";
-    } else {
-        document.getElementById('winOrLose').innerHTML = 'Invalid Choice';
-    }
+function myChoice(){
+
+    let game = prompt("Choose your hand !");
+    const gameInput = game.toLowerCase();
+    return gameInput;
 
 
 }
+console.log("Player " + playerSelection);
+
+function gameStart(playerSelection , npcSelection){
+    if(playerSelection === npcSelection){
+        console.log ("Draw");
+    }
+    if (playerSelection === "rock"){
+        if (npcSelection === 'paper'){
+            npcScore++;
+            console.log ("Computer wins with paper !");
+        }else if (npcSelection === 'scissors'){
+            playerScore++;
+            console.log("You win!")
+        }
+    }
+
+    if (playerSelection === "paper"){
+        if(npcSelection === 'scissors'){
+            npcScore++;
+            console.log ("Computer wins with scissors !");
+        }else if (npcSelection === 'rock'){
+            playerScore++;
+            console.log ("You win!");
+
+        }
+    }
+    if (playerSelection === "scissors"){
+        if(npcSelection === 'rock'){
+            npcScore++;
+            console.log ("Computer wins with rock !");
+        }else if (npcSelection === 'paper'){
+            playerScore++;
+            console.log("You win!");
+
+        }
+    }
+
+
+
+
+}
+gameStart(playerSelection , npcSelection);
+
+
+
+
+function game() {
+
+    for(let i = 1; i <= 5; i++) {
+      
+       
+       gameStart(playerSelection , npcSelection);
+       playerSelection = myChoice();
+       npcSelection = npcChoice();
+
+       console.log("Computer " + npcSelection);
+       console.log("Player " + playerSelection);
+   
+
+      
+    }
+    console.log("FINAL SCORE: ")
+    console.log("Player: " + playerScore);
+    console.log("Computer: " + npcScore);
+    console.log("THANK YOU FOR PLAYING !!!! ");
+    
+}
+
+game();
